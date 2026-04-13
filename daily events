@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Venus Daily Events | Premium Event Solutions</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- ALL CSS STYLES INCLUDED HERE (Same as index.html) -->
+    <style>
+        :root {
+            --color-black: #050505;
+            --color-charcoal: #121212;
+            --color-bg-gold: #1a1508; 
+            --color-bg-red: #1a0505;
+            --color-red: #D80000;
+            --color-gold: #C5A059;
+            --color-gold-light: #E5C585;
+            --color-silver: #E0E0E0;
+            --color-text-muted: #A0A0A0;
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Montserrat', sans-serif;
+            --transition: all 0.3s ease;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+         /* --- CSS VARIABLES & THEME --- */
+        body {
+            font-family: var(--font-body);
+            /* Deep Gradient Background */
+           /* Deep Diagonal Gradient: Black -> Deep Red -> Dark Gold -> Black */
+            background: linear-gradient(135deg, #1f1f1f 0%, #2a0808 40%, #2e2415 70%, #000000 100%);
+            background-attachment: fixed; /* Keeps the gradient fixed as you scroll */
+            color: var(--color-silver);
+            overflow-x: hidden;
+            perspective: 1000px; /* Essential for 3D effects */
+        }
+
+        a { text-decoration: none; color: inherit; transition: 0.4s ease; }
+        ul { list-style: none; }
+        img { max-width: 100%; display: block; }
+
+        /* --- UTILITIES --- */
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; position: relative; z-index: 2; }
+        .section-padding { padding: 120px 0; }
+        .text-center { text-align: center; }
+        .text-gold { color: var(--color-gold); }
+        .text-red { color: var(--color-red); }
+     
+        a { text-decoration: none; color: inherit; transition: var(--transition); }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        .section-padding { padding: 80px 0; }
+        .text-center { text-align: center; }
+        .text-gold { color: var(--color-gold); }
+        .section-title { font-family: var(--font-heading); font-size: 2.5rem; margin-bottom: 1rem; color: var(--color-gold); }
+        .btn { display: inline-block; padding: 14px 32px; font-weight: 600; text-transform: uppercase; border: 2px solid var(--color-gold); color: var(--color-gold); background: transparent; cursor: pointer; transition: var(--transition); font-size: 0.9rem; border-radius: 2px; }
+        .btn:hover { background: var(--color-gold); color: var(--color-black); }
+        .btn-gold { background: linear-gradient(45deg, var(--color-gold), var(--color-gold-light)); color: var(--color-black); border:none; }
+        .btn-gold:hover { transform: translateY(-3px); }
+
+       
+        
+        /* Page Specifics */
+        .page-hero { height: 100vh; background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),; background-size: cover; background-position: center; display: flex; align-items: center; justify-content: center; text-align: center; }
+        .page-hero h1 { font-family: var(--font-heading); font-size: 3rem; color: white; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-top: 40px; }
+        .service-box { background: #111; border: 1px solid #333; padding: 30px; text-align: center; transition: 0.3s; border-radius: 8px; }
+        .service-box:hover { border-color: var(--color-gold); transform: translateY(-5px); }
+        .service-icon { font-size: 2.5rem; color: var(--color-red); margin-bottom: 20px; }
+        .sector-tag { background: #222; padding: 10px 20px; border: 1px solid #444; border-radius: 30px; font-size: 0.9rem; }
+         /* --- CAROUSEL (Slider) --- */
+        .showcase { padding: 100px 0; background: rgba(0,0,0,0.3); }
+        .carousel-container { position: relative; width: 100%; margin-top: 50px; overflow: hidden; }
+        .carousel-track { display: flex; transition: transform 0.5s ease-in-out; width: 100%; }
+        .carousel-slide { min-width: 100%; position: relative; height: 500px; }
+        @media(min-width: 768px) { .carousel-slide { min-width: 33.333%; } }
+
+        .carousel-slide img { width: 100%; height: 100%; object-fit: cover; border: 1px solid #333; }
+        .carousel-content {
+            position: absolute; bottom: 0; left: 0; width: 100%;
+            background: linear-gradient(to top, #000, transparent); padding: 30px;
+        }
+        .carousel-btn {
+            position: absolute; top: 50%; transform: translateY(-50%);
+            background: rgba(0,0,0,0.8); color: var(--color-gold);
+            border: 1px solid var(--color-gold); width: 50px; height: 50px;
+            border-radius: 50%; cursor: pointer; z-index: 10;
+            display: flex; align-items: center; justify-content: center; transition: 0.3s;
+        }
+        .carousel-btn:hover { background: var(--color-gold); color: black; box-shadow: 0 0 15px var(--color-gold); }
+        .prev-btn { left: 20px; } .next-btn { right: 20px; }
+
+        
+        /* Form */
+        input, textarea, select { width: 100%; padding: 15px; margin-bottom: 15px; background: #1a1a1a; border: 1px solid #333; color: white; }
+        input:focus, textarea:focus { outline: none; border-color: var(--color-gold); }
+    /* Fixed: Added missing button styling */
+    
+    .btn btn-outline { 
+        border: 1px solid var(--color-gold); 
+        color: var(--color-gold); 
+        padding: 8px 20px;
+        background: transparent;
+        transition: 0.3s;
+    }
+    .btn btn-outline:hover {
+        background: var(--color-gold);
+        color: #000;
+    
+    }
+    header {
+    position: fixed; top: 0; width: 100%;
+   /* Darker, richer glass to match the new gradient */
+    background: rgba(5, 5, 5, 0.92); 
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(0px);
+    z-index: 1000;
+    border-bottom: 1px solid rgba(197, 160, 89, 0.1);
+    padding: 15px 0; /* Slightly tighter padding */
+    transition: 0.3s;
+}
+
+.nav-container { 
+    display: flex; 
+    justify-content: space-between; /* Pushes Left group to left, Right group to right */
+    align-items: center; 
+    position: relative; /* Needed to center the logo absolutely */
+    height: 100px;
+}
+
+/* LOGO CENTERED */
+.logo { 
+    position: absolute; 
+    left: 50%; 
+    transform: translateX(-50%); /* Perfect center */
+    height: 100px; 
+    display: flex; align-items: center;
+    z-index: 10;
+}
+.logo-img { 
+    height: 100%; width: auto; 
+    filter: drop-shadow(0 0 8px rgba(197,160,89,0.6)); 
+    transition: 0.3s;
+}
+.logo-img:hover { transform: scale(1.05); filter: drop-shadow(0 0 15px rgba(197,160,89,0.9)); }
+
+/* LINK GROUPS (Desktop) */
+.nav-left, .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 30px; /* Space between links */
+}
+
+.nav-links a { 
+    font-family: var(--font-body); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1.5px; color: #ccc; position: relative; transition: 0.3s;
+}
+.nav-links a:hover { color: var(--color-gold); }
+
+/* Underline Hover Effect */
+.nav-links a::after { content: ''; position: absolute; width: 0; height: 1px; bottom: -5px; left: 0; background-color: var(--color-red); transition: 0.3s; }
+.nav-links a:hover::after { width: 100%; }
+
+/* THE CTA BUTTON IN NAV */
+.btn-nav {
+    padding: 10px 25px !important;
+    background: var(--color-gold);
+    color: var(--color-black) !important;
+    border-radius: 2px;
+    font-weight: 700;
+    border: 1px solid var(--color-gold);
+}
+/* MOBILE MENU BUTTON */
+.mobile-menu-btn { display: none; color: var(--color-gold); font-size: 1.5rem; cursor: pointer; z-index: 20; }
+
+/* MOBILE DROPDOWN MENU (DEFAULT: HIDDEN) */
+.mobile-nav-dropdown {
+    display: none; /* <--- THIS WAS MISSING. This hides it on Desktop */
+    position: absolute; 
+    top: 80px; left: 0; width: 100%;
+    background: #000; 
+    border-bottom: 2px solid var(--color-gold);
+    flex-direction: column; 
+    padding: 20px; 
+    gap: 20px;
+    z-index: 999;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+}
+.mobile-nav-dropdown a { text-align: center; font-size: 1.1rem; padding: 10px; color: white; display: block; }
+.mobile-nav-dropdown a:hover { color: var(--color-gold); background: rgba(255,255,255,0.05); }
+
+/* MOBILE RESPONSIVENESS */
+@media (max-width: 992px) {
+    /* Hide the split nav on tablets/mobile */
+    .nav-left, .nav-right { display: none; }
+    
+    /* Show hamburger */
+    .mobile-menu-btn { display: block; position: absolute; right: 20px; }
+    
+    /* Show a centered logo only */
+    .logo { position: relative; left: auto; transform: none; margin: 0 auto; }
+    .nav-container { justify-content: center; }
+
+    /* SHOW Mobile Dropdown ONLY when active */
+    .mobile-nav-dropdown.active { display: flex; }
+}
+    /* Scroll Reveal Animation Class */
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 1s ease;
+        }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+         .hero-content {
+            position: relative; z-index: 3; text-align: center; max-width: 800px; padding: 0 20px;
+        }
+
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; position: relative; z-index: 2; }
+        .section-padding { padding: 120px 0; }
+        .text-center { text-align: center; }
+        .text-gold { color: var(--color-gold); }
+        .text-red { color: var(--color-red); }
+
+
+         /* --- FOOTER --- */
+        footer { background: #020202; padding: 80px 0 30px; border-top: 1px solid #222; position: relative; z-index: 2; }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 40px; margin-bottom: 50px; }
+        .footer-col h4 { color: var(--color-red); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 25px; font-size: 1rem; }
+        .footer-links li { margin-bottom: 12px; }
+        .footer-links a { color: var(--color-text-muted); font-size: 0.9rem; transition: 0.3s; }
+        .footer-links a:hover { color: var(--color-gold); padding-left: 5px; }
+
+        .hero-content h1{  font-family: var(--font-display);
+            font-size: 4.5rem;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            background: linear-gradient(to right, #fff, var(--color-gold), #fff);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            letter-spacing: 2px;
+        }
+
+        .hero-content p{  
+           font-size: 1.2rem; 
+           color: #f6bc49; margin-bottom: 40px; 
+           font-weight: 300; 
+           letter-spacing: 1px;
+        }
+             
+        .hero{
+             height: 100vh;
+             background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('images/DSC_3033.jpg');
+             background-size: cover;
+             background-position: center;
+             background-repeat: no-repeat;
+             display: flex;
+             align-items: center;
+             justify-content: center;
+             text-align: center;
+             position: relative;
+             z-index: 3;
+             width: 100%;
+             padding: 0 20px;
+        }
+        .btn-nav {
+    padding: 10px 25px !important;
+    background: var(--color-gold);
+    color: var(--color-black) !important;
+    border-radius: 2px;
+    font-weight: 700;
+    border: 1px solid var(--color-gold);
+}
+.btn-nav:hover {
+    background: transparent !important;
+    color: var(--color-gold) !important;
+    box-shadow: 0 0 15px rgba(197, 160, 89, 0.4);
+}
+    </style>
+</head>
+<body>
+
+    <!-- Header Navigation -->
+   <header>
+    <div class="container nav-container">
+        
+        
+        <!-- LEFT SIDE LINKS -->
+        <ul class="nav-links nav-left">
+            <li><a href="#service-box"class="btn-nav">Services</a></li>
+             <li><a href="#showcase"class="btn-nav">Gallery</a></li>
+        </ul>
+
+        <!-- CENTER LOGO -->
+        <a href="index.html" class="logo">
+            <!-- Ensure your logo is in images/logo.png -->
+            <img src="images/lego.png" alt="Venus Ventures Logo" class="logo-img">
+        </a>
+
+        <!-- RIGHT SIDE LINKS + CTA -->
+        <ul class="nav-links nav-right">
+           
+            <li><a href="#booking" class="btn-nav">booking</a></li>
+            <li><a href="#cta" class="btn-nav">contact us</a></li>
+        </ul>
+
+        <!-- MOBILE MENU TOGGLE (Only visible on mobile) -->
+        <div class="mobile-menu-btn" onclick="toggleMenu()">
+            <i class="fas fa-bars"></i>
+        </div>
+    </div>
+
+    <!-- MOBILE DROPDOWN MENU (Hidden on Desktop) -->
+    <div class="mobile-nav-dropdown container" id="mobileNav">
+        <a href="#service-box" onclick="toggleMenu()">Services</a>
+        <a href="#showcase" onclick="toggleMenu()">Gallery</a>
+        <a href="#video-showcase" onclick="toggleMenu()" class="btn-nav" style="text-align:center; display:block;">projects</a>
+    </div>
+</header>
+
+    <!-- Page Hero -->
+      <section class="hero">
+         <!-- Hero background image is applied via CSS -->
+        <div class="hero-content reveal">
+            <h1>Venus Daily Events</h1>
+             <p><span class="highlight">Your number #1 Executive Event planner with every solution</span></p>
+            <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+                <a href="#service-box" class="btn">Explore our services</a>
+            </div>
+        </div>
+       
+    </section>
+ 
+    <!-- Services Details -->
+    <section id="service-box" class="services-section section-padding">
+        <div class="container">
+            <div class="text-center">
+                <span class="text-gold" style="text-transform: uppercase; letter-spacing: 2px;">What We Provide</span>
+                <h2 class="section-title">Our Equipment & Services</h2>
+            </div>
+
+            <div class="grid">
+                <!-- Service 1 -->
+                 
+                <div class="service-box">
+                    <div class="service-icon"><i class="fas fa-campground"></i></div>
+                    <h3 style="color: var(--color-silver);">High-Tech Tents</h3>
+                    <p style="color:#888;">Weather-resistant, elegant tents solutions for corporate galas and outdoor functions.</p>
+                </div>
+                <!-- Service 2 -->
+                <div class="service-box">
+                    <div class="service-icon"><i class="fas fa-tv"></i></div>
+                    <h3 style="color: var(--color-silver);">Digital Screens</h3>
+                    <p style="color:#888;">LED walls and high-definition projection screens for presentations and live feeds.</p>
+                </div>
+                <!-- Service 3 -->
+                <div class="service-box">
+                    <div class="service-icon"><i class="fas fa-bullhorn"></i></div>
+                    <h3 style="color: var(--color-silver);">Professional Sound</h3>
+                    <p style="color:#888;">Crisp, clear audio systems capable of covering stadiums or intimate settings.</p>
+                </div>
+                <!-- Service 4 -->
+                <div class="service-box">
+                    <div class="service-icon"><i class="fas fa-cube"></i></div>
+                    <h3 style="color: var(--color-silver);">Concert Staging</h3>
+                    <p style="color:#888;">Crafting immersive, high-impact environments that amplify every beat and turn every performance into a legendary spectacle.</p>
+                </div>
+                <!-- Service 5 -->
+                <div class="service-box">
+                    <div class="service-icon"><i class="fas fa-video"></i></div>
+                    <h3 style="color: var(--color-silver);">Live Streaming</h3>
+                    <p style="color:#888;">Multi-camera production and live broadcasting for global audiences.</p>
+                </div>
+                <!-- Service 6 -->
+                <div class="service-box">
+                    <div class="service-icon"><i class="fas fa-film"></i></div>
+                    <h3 style="color: var(--color-silver);">Full Media Production</h3>
+                    <p style="color:#888;">Photography and videography coverage to document your event professionally.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Who We Serve -->
+    <section style="background: rgba(0,0,0,0.5); padding: 60px 0;">
+        <div class="container text-center">
+            <h2 style="font-family: var(--font-heading); color: var(--color-silver);">We Cater for</h2>
+            <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; margin-top: 30px;">
+                <div class="sector-tag"><i class="fas fa-building"></i> Corporate Events</div>
+                <div class="sector-tag"><i class="fas fa-ring"></i> Weddings</div>
+                <div class="sector-tag"><i class="fas fa-flag"></i> Presidential & State</div>
+                <div class="sector-tag"><i class="fas fa-church"></i> Church Conferences</div>
+                <div class="sector-tag"><i class="fas fa-landmark"></i> Institutional</div>
+                <div class="sector-tag"><i class="fas fa-users"></i> Private Parties</div>
+            </div>
+        </div>
+    </section>
+    <!-- MOVING CAROUSEL -->
+    <section id="showcase" class="section-padding showcase">
+        <div class="container">
+            <div class="text-center reveal">
+                <span style="color: var(--color-red); text-transform: uppercase; letter-spacing: 2px; font-size: 0.8rem;">Visual Portfolio</span>
+                <h2 style="font-family: var(--font-display); font-size: 2.5rem; color: var(--color-gold); margin-top: 10px;">Our Best Work</h2>
+            </div>
+
+            <div class="carousel-container reveal">
+                <button class="carousel-btn prev-btn" onclick="moveSlide(-1)"><i class="fas fa-chevron-left"></i></button>
+                <button class="carousel-btn next-btn" onclick="moveSlide(1)"><i class="fas fa-chevron-right"></i></button>
+                
+                <div class="carousel-track" id="track">
+                    <!-- Slide 1 -->
+                     <div class="carousel-track" id="track">
+                        <img src="images/w1.JPG" alt="Corporate Event">
+                       
+                    </div>
+                    <!-- Slide 2 -->
+                    <div class="carousel-slide">
+                        <img src="images/JWN-9309.jpg" alt="Safari Tour">
+                       
+                    </div>
+                    <!-- Slide 3 -->
+                    <div class="carousel-slide">
+                        <img src="images/9.JPG" alt="Singer">
+                      
+                    </div>
+                    <!-- Slide 4 -->
+                    <div class="carousel-slide">
+                        <img src="images/DJI_0059.jpg" alt="Wedding">
+                        
+                    </div>
+                     <div class="carousel-slide">
+                        <img src="images/DSC_3033.jpg" alt="Wedding">
+                        
+                    </div>
+                     <div class="carousel-slide">
+                        <img src="images/DSC_7816.jpg" alt="Wedding">
+                        
+                     </div>
+                     <div class="carousel-slide">
+                        <img src="images/JWN-9360.jpg" alt="Wedding">
+                            
+                         </div>
+                     <div class="carousel-slide">
+                        <img src="images/1.jpg" alt="Wedding">
+                        
+                         </div>
+                    <div class="carousel-slide">
+                        <img src="images/2.jpg" alt="Wedding">
+                    
+                         </div>
+                    <div class="carousel-slide">
+                        <img src="images/3.png" alt="Wedding">
+                       
+                          </div>
+                    <div class="carousel-slide">
+                        <img src="images/4.png" alt="Wedding">
+                            </div>
+                        
+                    <div class="carousel-slide">
+                        <img src="images/JWN-9746.jpg" alt="Wedding">
+                        
+                          </div>
+                        
+                    <div class="carousel-slide">
+                        <img src="images/JWN-9757.jpg" alt="Wedding">
+                        
+                          </div>
+                        
+                    <div class="carousel-slide">
+                        <img src="images/DSC_2991.jpg" alt="Wedding">
+                        
+                          </div>
+                    <div class="carousel-slide">
+                        <img src="images/8.jpg" alt="Wedding">
+                        
+                          </div>
+                    <div class="carousel-slide">
+                        <img src="images/DSC_2995.jpg" alt="Wedding">
+                          </div>
+                    <div class="carousel-slide">
+                        <img src="images/JWN-9370.jpg" alt="Wedding">
+                        
+                </div>
+            </div>
+        </div>
+    </section>    
+
+    <!-- Booking Form -->
+    <section id="booking" class="contact-area section-padding">
+        <div class="container" style="max-width: 600px; margin: 0 auto;">
+            <div class="text-center">
+                <h2 class="section-title">Book Your Event</h2>
+                <p style="color: #aaa; margin-bottom: 30px;">Tell us about your requirements.</p>
+            </div>
+            
+           <form action="https://formsubmit.co/venusdailyevents@gmail.com" method="POST">
+    <input type="text" name="name" placeholder="Full Name" required>
+    <input type="email" name="email" placeholder="Email" required>
+    <textarea name="message" placeholder="Event Details"></textarea>
+    
+    <input type="hidden" name="_next" value="https://yourusername.github.io/venus-ventures/index.html">
+    
+    <button type="submit" class="btn btn-gold">Request Booking</button>
+</form>
+        </div>
+    </section>
+
+     <footer>
+        
+        <div id="cta" class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h2 style="font-family: var(--font-display); font-size: 1.8rem; color: var(--color-silver); margin-bottom: 20px;">VENUS <span style="color:var(--color-gold)">DAILY EVENTS</span></h2>
+                    <p style="color: #888; font-size: 0.9rem;">Redefining excellence in events.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <ul class="footer-links">
+                        <li><a href="venusdailyevents.html">Venus Daily Events</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="#showcase">Gallery</a></li>
+                        <li><a href="#video-showcase">Videos</a></li>
+                        <li><a href="#reviews">Reviews</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="text-center" style="color: #555; font-size: 0.8rem; border-top: 1px solid #111; padding-top: 20px;">&copy; 2026 Venus Ventures Limited.</div>
+        </div>
+    </footer>
+ <!-- JAVASCRIPT LOGIC -->
+       <script>
+        // 1. SCROLL REVEAL ANIMATION (Elements fading in)
+        window.addEventListener('scroll', reveal);
+
+        function reveal() {
+            var reveals = document.querySelectorAll('.reveal');
+            for (var i = 0; i < reveals.length; i++) {
+                var windowheight = window.innerHeight;
+                var revealtop = reveals[i].getBoundingClientRect().top;
+                var revealpoint = 150;
+
+                if (revealtop < windowheight - revealpoint) {
+                    reveals[i].classList.add('active');
+                }
+            }
+        }
+        // Trigger once on load
+        reveal();
+
+        // 2. PARALLAX EFFECT ON HERO BACKGROUND
+        window.addEventListener('scroll', () => {
+            const scrollY = window.scrollY;
+            const heroBg = document.getElementById('heroBg');
+            if(heroBg) {
+                // Moves background slower than scroll for depth
+                // Using requestAnimationFrame for better performance than raw scroll event
+                window.requestAnimationFrame(() => {
+                    heroBg.style.transform = `translateY(${scrollY * 0.5}px)`;
+                });
+            }
+        });
+
+        // 3. 3D TILT EFFECT ON DIVISION CARDS
+        const cards = document.querySelectorAll('.js-tilt');
+
+        cards.forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left; 
+                const y = e.clientY - rect.top;  
+                
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                const rotateX = ((y - centerY) / centerY) * -10; 
+                const rotateY = ((x - centerX) / centerX) * 10;
+
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+            });
+
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = `perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)`;
+            });
+        });
+
+        // 4. CAROUSEL LOGIC (Moving Slides)
+        let currentIndex = 0;
+        const track = document.getElementById('track');
+        
+        if(track) {
+            const slides = Array.from(track.children);
+            
+            function getSlidesPerView() { 
+                return window.innerWidth >= 768 ? 3 : 1; 
+            }
+            
+            function updateCarousel() {
+                const slidesPerView = getSlidesPerView();
+                const maxIndex = slides.length - slidesPerView;
+                
+                if (currentIndex < 0) currentIndex = 0;
+                if (currentIndex > maxIndex) currentIndex = maxIndex;
+                
+                const amountToMove = currentIndex * (100 / slidesPerView);
+                track.style.transform = `translateX(-${amountToMove}%)`;
+            }
+            
+            function moveSlide(direction) { 
+                currentIndex += direction; 
+                updateCarousel(); 
+            }
+
+            // Auto-play carousel
+            let carouselInterval = setInterval(() => {
+                const slidesPerView = getSlidesPerView();
+                if (currentIndex < slides.length - slidesPerView) { 
+                    moveSlide(1); 
+                } else { 
+                    currentIndex = 0; 
+                    updateCarousel(); 
+                }
+            }, 4000);
+
+            // Pause carousel on hover to save resources
+            track.addEventListener('mouseenter', () => clearInterval(carouselInterval));
+            track.addEventListener('mouseleave', () => {
+                 carouselInterval = setInterval(() => {
+                    const slidesPerView = getSlidesPerView();
+                    if (currentIndex < slides.length - slidesPerView) { 
+                        moveSlide(1); 
+                    } else { 
+                        currentIndex = 0; 
+                        updateCarousel(); 
+                    }
+                }, 4000);
+            });
+        }
+
+        // 5. MOBILE MENU TOGGLE
+        function toggleMenu() { 
+            const mobileNav = document.getElementById('mobileNav');
+            if(mobileNav) {
+                mobileNav.classList.toggle('active'); 
+            }
+        }
+
+        // 6. MODAL LOGIC (Audition Form)
+        function openModal() { 
+            document.getElementById('auditionModal').style.display = "flex"; 
+        }
+        
+        function closeModal() { 
+            document.getElementById('auditionModal').style.display = "none"; 
+        }
+
+        // Close modal if clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('auditionModal');
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }       
+        const brandsTrack = document.querySelector('.brands-track');
+
+        // 7. DYNAMIC STATISTICS COUNTER (Optimized)
+        const stats = document.querySelectorAll('.stat-number');
+        let hasCounted = false;
+
+        const observerOptions = { threshold: 0.5 };
+
+        const statsObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !hasCounted) {
+                    hasCounted = true;
+                    stats.forEach(stat => {
+                        const target = +stat.getAttribute('data-target');
+                        const duration = 2000; // Fixed duration of 2 seconds
+                        const increment = target / (duration / 20); // Calculate steps
+
+                        let current = 0;
+                        const updateCount = () => {
+                            current += increment;
+                            if (current < target) {
+                                stat.innerText = Math.ceil(current);
+                                requestAnimationFrame(updateCount);
+                            } else {
+                                stat.innerText = target + "+";
+                            }
+                        };
+                        updateCount();
+                    });
+                    observer.unobserve(entry.target); // Stop watching once counted
+                }
+            });
+        }, observerOptions);
+
+        const statsSection = document.querySelector('.stats-grid');
+        if(statsSection) {
+            statsObserver.observe(statsSection);
+        }
+    const brandObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            // If section is visible on screen
+            if (entry.isIntersecting) {
+                brandsTrack.classList.add('animate');
+            } else {
+                // If user scrolled away, STOP the animation to save lag
+                brandsTrack.classList.remove('animate');
+            }
+        });
+    }, { threshold: 0.1 }); // Trigger when 10% of the section is visible
+
+    </script>
+</body>
+</html>
