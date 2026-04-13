@@ -1,0 +1,1301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Venus Ventures Limited | Premium Experiences</title>
+    
+    <!-- Fonts: Cinzel (Luxury), Playfair (Elegant), Montserrat (Clean) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* --- CSS VARIABLES & THEME --- */
+        :root {
+            /* Deep Cinematic Palette */
+            --color-black: #050505;
+            --color-dark-red: #1a0505;
+            --color-red: #D80000;
+            --color-gold: #C5A059;
+            --color-gold-light: #E5C585;
+            --color-silver: #E0E0E0;
+            --color-glass: rgba(20, 20, 20, 0.85);
+            
+            /* Fonts */
+            --font-display: 'Cinzel', serif;
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Montserrat', sans-serif;
+        }
+
+        /* --- GLOBAL RESET --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: var(--font-body);
+            /* Deep Gradient Background */
+           /* Deep Diagonal Gradient: Black -> Deep Red -> Dark Gold -> Black */
+            background: linear-gradient(135deg, #1f1f1f 0%, #2a0808 40%, #2e2415 70%, #000000 100%);
+            background-attachment: fixed; /* Keeps the gradient fixed as you scroll */
+            color: var(--color-silver);
+            overflow-x: hidden;
+            perspective: 1000px; /* Essential for 3D effects */
+        }
+
+        a { text-decoration: none; color: inherit; transition: 0.4s ease; }
+        ul { list-style: none; }
+        img { max-width: 100%; display: block; }
+
+        /* --- UTILITIES --- */
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; position: relative; z-index: 2; }
+        .section-padding { padding: 120px 0; }
+        .text-center { text-align: center; }
+        .text-gold { color: var(--color-gold); }
+        .text-red { color: var(--color-red); }
+
+        /* Scroll Reveal Animation Class */
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 1s ease;
+        }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        /* --- BUTTONS --- */
+        .btn {
+            display: inline-block;
+            padding: 16px 40px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.9rem;
+            border: 1px solid var(--color-gold);
+            color: var(--color-gold);
+            background: rgba(0,0,0,0.4);
+            backdrop-filter: blur(5px);
+            cursor: pointer;
+            transition: 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            position: relative;
+            overflow: hidden;
+            border-radius: 2px;
+        }
+
+        .btn::before {
+            content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
+            background: var(--color-gold); z-index: -1; transition: 0.4s;
+        }
+        .btn:hover::before { left: 0; }
+        .btn:hover { color: var(--color-black); box-shadow: 0 0 25px rgba(197, 160, 89, 0.5); }
+        
+        .btn-red {
+            border-color: var(--color-red);
+            color: var(--color-red);
+        }
+        .btn-red::before { background: var(--color-red); }
+        .btn-red:hover { box-shadow: 0 0 25px rgba(216, 0, 0, 0.5); }
+        /* --- CAPTIVATING ARTICLE SECTION --- */
+.about-article {
+    position: relative;
+    z-index: 2;
+    padding: 100px 0;
+    /* Slight overlay to ensure text pops against the gradient background */
+    background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.6), transparent);
+}
+
+.article-content {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.article-content h2 {
+    font-family: var(--font-display);
+    font-size: 2.5rem;
+    color: var(--color-gold);
+    margin-bottom: 30px;
+    letter-spacing: 1px;
+    position: relative;
+    display: inline-block;
+}
+
+/* Decorative line under title */
+.article-content h2::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background: var(--color-red);
+    margin: 15px auto 0;
+}
+
+.article-content p {
+    font-family: var(--font-body);
+    font-size: 1.2rem;
+    color: #d0d0d0;
+    line-height: 1.8;
+    margin-bottom: 20px;
+    font-weight: 300;
+}
+
+.article-content .highlight {
+    color: var(--color-gold-light);
+    font-weight: 600;
+}
+
+/* --- MISSION VISION VALUES CARDS --- */
+.mvv-section {
+    position: relative;
+    z-index: 2;
+    padding: 80px 0;
+    background: rgba(0,0,0,0.3);
+    border-top: 1px solid rgba(197, 160, 89, 0.1);
+    border-bottom: 1px solid rgba(197, 160, 89, 0.1);
+}
+
+.mvv-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 60px;
+}
+
+.mvv-card {
+    background: rgba(20, 20, 20, 0.6);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(197, 160, 89, 0.2);
+    padding: 40px 30px;
+    text-align: center;
+    border-radius: 8px;
+    transition: 0.4s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.mvv-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--color-gold);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    background: rgba(30, 30, 30, 0.8);
+}
+
+.mvv-icon {
+    font-size: 3rem;
+    color: var(--color-red);
+    margin-bottom: 25px;
+    text-shadow: 0 0 15px rgba(216, 0, 0, 0.4);
+}
+
+.mvv-card h3 {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    color: var(--color-gold);
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.mvv-card p {
+    color: #bbb;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+        /* --- NAVIGATION --- */
+header {
+    position: fixed; top: 0; width: 100%;
+   /* Darker, richer glass to match the new gradient */
+    background: rgba(5, 5, 5, 0.92); 
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(0px);
+    z-index: 1000;
+    border-bottom: 1px solid rgba(197, 160, 89, 0.1);
+    padding: 15px 0; /* Slightly tighter padding */
+    transition: 0.3s;
+}
+
+.nav-container { 
+    display: flex; 
+    justify-content: space-between; /* Pushes Left group to left, Right group to right */
+    align-items: center; 
+    position: relative; /* Needed to center the logo absolutely */
+    height: 80px;
+}
+
+/* LOGO CENTERED */
+.logo { 
+    position: absolute; 
+    left: 50%; 
+    transform: translateX(-50%); /* Perfect center */
+    height: 100px; 
+    display: flex; align-items: center;
+    z-index: 10;
+}
+.logo-img { 
+    height: 100%; width: auto; 
+    filter: drop-shadow(0 0 8px rgba(197,160,89,0.6)); 
+    transition: 0.3s;
+}
+.logo-img:hover { transform: scale(1.05); filter: drop-shadow(0 0 15px rgba(197,160,89,0.9)); }
+
+/* LINK GROUPS (Desktop) */
+.nav-left, .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 30px; /* Space between links */
+}
+
+.nav-links a { 
+    font-family: var(--font-body); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1.5px; color: #ccc; position: relative; transition: 0.3s;
+}
+.nav-links a:hover { color: var(--color-gold); }
+
+/* Underline Hover Effect */
+.nav-links a::after { content: ''; position: absolute; width: 0; height: 1px; bottom: -5px; left: 0; background-color: var(--color-red); transition: 0.3s; }
+.nav-links a:hover::after { width: 100%; }
+
+/* THE CTA BUTTON IN NAV */
+.btn-nav {
+    padding: 10px 25px !important;
+    background: var(--color-gold);
+    color: var(--color-black) !important;
+    border-radius: 2px;
+    font-weight: 700;
+    border: 1px solid var(--color-gold);
+}
+.btn-nav:hover {
+    background: transparent !important;
+    color: var(--color-gold) !important;
+    box-shadow: 0 0 15px rgba(197, 160, 89, 0.4);
+}
+.btn-nav::after { display: none; /* Remove underline for button */ }
+
+/* MOBILE MENU BUTTON */
+.mobile-menu-btn { display: none; color: var(--color-gold); font-size: 1.5rem; cursor: pointer; z-index: 20; }
+
+/* MOBILE DROPDOWN MENU (DEFAULT: HIDDEN) */
+.mobile-nav-dropdown {
+    display: none; /* <--- THIS WAS MISSING. This hides it on Desktop */
+    position: absolute; 
+    top: 80px; left: 0; width: 100%;
+    background: #000; 
+    border-bottom: 2px solid var(--color-gold);
+    flex-direction: column; 
+    padding: 20px; 
+    gap: 20px;
+    z-index: 999;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+}
+.mobile-nav-dropdown a { text-align: center; font-size: 1.1rem; padding: 10px; color: white; display: block; }
+.mobile-nav-dropdown a:hover { color: var(--color-gold); background: rgba(255,255,255,0.05); }
+
+/* MOBILE RESPONSIVENESS */
+@media (max-width: 992px) {
+    /* Hide the split nav on tablets/mobile */
+    .nav-left, .nav-right { display: none; }
+    
+    /* Show hamburger */
+    .mobile-menu-btn { display: block; position: absolute; right: 20px; }
+    
+    /* Show a centered logo only */
+    .logo { position: relative; left: auto; transform: none; margin: 0 auto; }
+    .nav-container { justify-content: center; }
+
+    /* SHOW Mobile Dropdown ONLY when active */
+    .mobile-nav-dropdown.active { display: flex; }
+}
+        /* --- HERO SECTION (Parallax) --- */
+        .hero {
+            height: 100vh;
+            position: relative;
+            overflow: hidden;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .hero-bg {
+             position: absolute; top: 0; left: 0; width: 100%; height: 110%; /* 110% height to cover parallax movement */
+             object-fit: cover; /* Ensures video fills the screen without stretching */
+            z-index: 1;
+            /* Darkens the video so the text is readable */
+             filter: brightness(0.4) contrast(1.1); 
+            pointer-events: none; /* Prevents user from clicking/pausing the video */
+        }
+        .hero-content {
+            position: relative; z-index: 3; text-align: center; max-width: 800px; padding: 0 20px;
+        }
+        .hero h1 {
+            font-family: var(--font-display);
+            font-size: 4.5rem;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            background: linear-gradient(to right, #fff, var(--color-gold), #fff);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            letter-spacing: 2px;
+        }
+        .hero p {
+            font-size: 1.2rem; color: #ccc; margin-bottom: 40px; font-weight: 300; letter-spacing: 1px;
+        }
+
+        /* --- 3D DIVISIONS (With Gold Glow) --- */
+        .subsidiaries { position: relative; z-index: 2; }
+        .cards-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; margin-top: 80px;
+            perspective: 2000px;
+        }
+
+        /* THE 3D CARD */
+        .company-card {
+            background: rgba(10, 10, 10, 0.8);
+            border: 1px solid rgba(197, 160, 89, 0.3);
+            padding: 50px 30px;
+            position: relative;
+            transform-style: preserve-3d;
+            transform: perspective(1000px);
+            transition: transform 0.1s ease-out; /* Smooth mouse follow */
+            cursor: pointer;
+            border-radius: 8px;
+            
+            /* THE GLOW EFFECT */
+            box-shadow: 0 0 15px rgba(197, 160, 89, 0.1); 
+        }
+
+        /* Intense Glow on Hover */
+        .company-card:hover {
+            box-shadow: 0 0 35px rgba(197, 160, 89, 0.4), inset 0 0 10px rgba(197, 160, 89, 0.2);
+            border-color: var(--color-gold);
+        }
+
+        /* 3D Depth Elements */
+        .card-icon {
+            height: 80px; /* Sets a fixed height for the logo area */
+             display: flex;
+            align-items: center; /* Centers vertically */
+            justify-content: center; /* Centers horizontally */
+            margin-bottom: 30px;
+}
+
+        .card-icon img {
+            max-height: 100%; /* Ensures logo fits inside the height */
+            max-width: 100%;  /* Ensures logo doesn't overflow width */
+            object-fit: contain;
+            /* THE GOLD GLOW EFFECT FOR LOGOS */
+            filter: drop-shadow(0 0 15px rgba(197, 160, 89, 0.6)); 
+            transition: 0.3s;
+}
+
+/* Optional: Logo gets brighter on hover */
+.company-card:hover .card-icon img {
+    filter: drop-shadow(0 0 25px rgba(197, 160, 89, 1));
+    transform: scale(1.05);
+}
+        .company-card h3 {
+            font-family: var(--font-display); font-size: 1.8rem; color: white; margin-bottom: 5px; transform: translateZ(40px);
+        }
+        .company-card h4 {
+            color: var(--color-red); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20px; transform: translateZ(30px);
+        }
+        .company-card p {
+            color: #aaa; font-size: 0.95rem; margin-bottom: 25px; line-height: 1.6; transform: translateZ(20px);
+        }
+        .card-divider { height: 1px; background: linear-gradient(90deg, transparent, var(--color-gold), transparent); margin: 20px 0; transform: translateZ(20px); }
+        .service-list li {
+            color: #ccc; font-size: 0.9rem; margin-bottom: 10px; display: flex; align-items: center; transform: translateZ(15px);
+        }
+        .service-list i { color: var(--color-gold); margin-right: 12px; width: 15px; }
+
+        /* --- CAROUSEL (Slider) --- */
+        .showcase { padding: 100px 0; background: rgba(0,0,0,0.3); }
+        .carousel-container { position: relative; width: 100%; margin-top: 50px; overflow: hidden; }
+        .carousel-track { display: flex; transition: transform 0.5s ease-in-out; width: 100%; }
+        .carousel-slide { min-width: 100%; position: relative; height: 500px; }
+        @media(min-width: 768px) { .carousel-slide { min-width: 33.333%; } }
+
+        .carousel-slide img { width: 100%; height: 100%; object-fit: cover; border: 1px solid #333; }
+        .carousel-content {
+            position: absolute; bottom: 0; left: 0; width: 100%;
+            background: linear-gradient(to top, #000, transparent); padding: 30px;
+        }
+        .carousel-btn {
+            position: absolute; top: 50%; transform: translateY(-50%);
+            background: rgba(0,0,0,0.8); color: var(--color-gold);
+            border: 1px solid var(--color-gold); width: 50px; height: 50px;
+            border-radius: 50%; cursor: pointer; z-index: 10;
+            display: flex; align-items: center; justify-content: center; transition: 0.3s;
+        }
+        .carousel-btn:hover { background: var(--color-gold); color: black; box-shadow: 0 0 15px var(--color-gold); }
+        .prev-btn { left: 20px; } .next-btn { right: 20px; }
+
+        /* --- VIDEO SECTION --- */
+        .video-section { background: rgba(0,0,0,0.5); }
+        .video-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; margin-top: 50px; }
+        .video-wrapper { position: relative; padding-bottom: 56.25%; height: 0; border: 1px solid #333; border-radius: 4px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+
+        /* --- REVIEWS SECTION --- */
+        .reviews { background: linear-gradient(to bottom, transparent, rgba(26, 5, 5, 0.4)); }
+        .reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 50px; }
+        .review-card {
+            background: rgba(255,255,255,0.03); border: 1px solid #333; padding: 40px; border-radius: 4px; position: relative; transition: 0.3s;
+        }
+        .review-card:hover { border-color: var(--color-gold); transform: translateY(-5px); }
+        .review-card::before {
+            content: '\f10d'; font-family: 'Font Awesome 6 Free'; font-weight: 900;
+            position: absolute; top: 20px; right: 20px; font-size: 3rem;
+            color: rgba(197, 160, 89, 0.1);
+        }
+        .stars { color: var(--color-gold); margin-bottom: 15px; font-size: 0.9rem; }
+        .review-text { font-style: italic; color: #ccc; margin-bottom: 20px; line-height: 1.6; }
+
+        /* --- FOOTER --- */
+        footer { background: #020202; padding: 80px 0 30px; border-top: 1px solid #222; position: relative; z-index: 2; }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 40px; margin-bottom: 50px; }
+        .footer-col h4 { color: var(--color-red); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 25px; font-size: 1rem; }
+        .footer-links li { margin-bottom: 12px; }
+        .footer-links a { color: var(--color-text-muted); font-size: 0.9rem; transition: 0.3s; }
+        .footer-links a:hover { color: var(--color-gold); padding-left: 5px; }
+
+        /* --- MODAL --- */
+        .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.9); align-items: center; justify-content: center; backdrop-filter: blur(5px); }
+        .modal-content { background-color: #111; border: 1px solid var(--color-gold); padding: 40px; width: 90%; max-width: 500px; position: relative; border-radius: 8px; box-shadow: 0 0 30px rgba(197, 160, 89, 0.2); }
+        .close-btn { position: absolute; top: 10px; right: 20px; color: #aaa; font-size: 28px; cursor: pointer; transition: 0.3s; }
+        .close-btn:hover { color: var(--color-red); }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.8rem; }
+            .nav-links { 
+                position: fixed; top: 80px; right: -100%; width: 100%; height: calc(100vh - 80px); 
+                background: #000; flex-direction: column; justify-content: center; align-items: center; transition: 0.4s ease; 
+            }
+            .nav-links.active { right: 0; }
+            .mobile-menu-btn { display: block; }
+            .cards-grid { perspective: none; }
+            .company-card { transform: none !important; }
+            .footer-grid { grid-template-columns: 1fr; }
+            .carousel-slide { min-width: 100%; }
+        }
+       /* --- MARQUEE ANIMATION KEYFRAMES --- */
+@keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); } /* Moves halfway, creating an infinite loop if content is doubled */
+}
+
+/* --- BRANDS SECTION (Simplified & Fast) --- */
+.brands-wrapper {
+    width: 100%;
+    overflow: hidden;
+    padding: 40px 0;
+    background: rgba(0,0,0,0.2);
+    border-top: 1px solid rgba(197, 160, 89, 0.1);
+    border-bottom: 1px solid rgba(197, 160, 89, 0.1);
+}
+
+.brands-track {
+    display: flex;
+    width: max-content; /* Ensure track fits all logos */
+    /* Note: Animation is handled by JS class below */
+}
+
+/* The Animation Class (Only runs when added by JS) */
+.brands-track.animate {
+    animation: scroll 25s linear infinite;
+}
+
+@keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+.brand-item {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    height: 80px;
+    margin: 0 50px;
+    opacity: 0.6; /* Simple opacity, no filters */
+    transition: opacity 0.3s;
+}
+
+.brand-item:hover {
+    opacity: 1;
+    /* Removed scale transform to reduce rendering load */
+}
+
+.brand-item img {
+    max-height: 100%;
+    max-width: 150px;
+    /* Removed filters completely */
+}
+
+/* --- TESTIMONIALS SECTION (Linear Marquee) --- */
+.testimonials-wrapper {
+    width: 100%;
+    overflow: hidden;
+    padding: 60px 0;
+    background: rgba(0,0,0,0.3);
+}
+
+.testimonials-track {
+    display: flex;
+    width: max-content; /* Ensure track is wide enough for all cards */
+    animation: scroll 30s linear infinite; /* Slower speed for reading text */
+}
+
+.testimonials-wrapper:hover .testimonials-track {
+    animation-play-state: paused;
+}
+
+.review-card-scroll {
+    flex: 0 0 auto; /* Don't shrink cards */
+    width: 350px; /* Fixed width for cards */
+    margin: 0 20px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid #333;
+    padding: 30px;
+    border-radius: 8px;
+    position: relative;
+    transition: 0.3s;
+}
+.review-card-scroll:hover {
+    border-color: var(--color-gold);
+    background: rgba(255,255,255,0.06);
+}
+/* Hover Effect: Zoom & Color */
+
+/* --- DYNAMIC STATISTICS --- */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 40px;
+    margin-top: 80px;
+    text-align: center;
+}
+
+.stat-item {
+    position: relative;
+    padding: 20px;
+}
+
+.stat-number {
+    font-family: var(--font-display);
+    font-size: 4rem;
+    font-weight: 700;
+    color: var(--color-gold);
+    text-shadow: 0 0 20px rgba(197, 160, 89, 0.4);
+    display: block;
+    margin-bottom: 10px;
+    transition: 0.3s;
+}
+
+.stat-item:hover .stat-number {
+    transform: scale(1.1);
+    color: #fff;
+    text-shadow: 0 0 30px rgba(197, 160, 89, 0.8);
+}
+
+.stat-label {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.9rem;
+    color: var(--color-red);
+    font-weight: 600;
+}
+
+/* Divider between brands and stats */
+.section-divider {
+    height: 1px;
+    width: 100px;
+    background: linear-gradient(90deg, transparent, var(--color-gold), transparent);
+    margin: 80px auto;
+}
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+<header>
+    <div class="container nav-container">
+        
+        
+        <!-- LEFT SIDE LINKS -->
+        <ul class="nav-links nav-left">
+            <li><a href="#subsidiaries"class="btn-nav">Services</a></li>
+            <li><a href="#showcase"class="btn-nav">Gallery</a></li>
+        </ul>
+
+        <!-- CENTER LOGO -->
+        <a href="index.html" class="logo">
+            <!-- Ensure your logo is in images/logo.png -->
+            <img src="images/lego.png" alt="Venus Ventures Logo" class="logo-img">
+        </a>
+
+        <!-- RIGHT SIDE LINKS + CTA -->
+        <ul class="nav-links nav-right">
+            <li><a href="#reviews"class="btn-nav">reviews</a></li>
+            <li><a href="#video-showcase" class="btn-nav">projects</a></li>
+        </ul>
+
+        <!-- MOBILE MENU TOGGLE (Only visible on mobile) -->
+        <div class="mobile-menu-btn" onclick="toggleMenu()">
+            <i class="fas fa-bars"></i>
+        </div>
+    </div>
+
+    <!-- MOBILE DROPDOWN MENU (Hidden on Desktop) -->
+    <div class="mobile-nav-dropdown container" id="mobileNav">
+        <a href="#subsidiaries" onclick="toggleMenu()">Services</a>
+        <a href="#showcase" onclick="toggleMenu()">Gallery</a>
+        <a href="#reviews" onclick="toggleMenu()">reviews</a>
+        <a href="#video-showcase" onclick="toggleMenu()" class="btn-nav" style="text-align:center; display:block;">projects</a>
+    </div>
+</header>
+    <!-- Cinematic Hero -->
+    <section id="hero" class="hero">
+       <!-- 
+    POSTER: This is the image shown while the video loads.
+    SRC: Replace 'your-video.mp4' with your actual video file path.
+-->
+<video class="hero-bg" id="heroBg" autoplay muted loop playsinline poster="images/lego.png">
+    <!-- DEMO VIDEO LINK (Luxury abstract gold/black loop) -->
+    <source src="" type="video/mp4">
+    <!-- Fallback for browsers that don't support video -->
+    Your browser does not support the video tag.
+</video>
+        <div class="hero-content reveal">
+            <h1>Venus Ventures</h1>
+             <p><span class="highlight">Creating Longlasting and Redifined Experiences</span></p>
+            <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+                <a href="#subsidiaries" class="btn">Explore our services</a>
+            </div>
+        </div>
+    </section>
+      
+     <!-- MISSION, VISION, VALUES SECTION -->
+    <section class="mvv-section">
+        <div class="container">
+            <div class="text-center reveal">
+                <span style="color: var(--color-red); text-transform: uppercase; letter-spacing: 2px; font-size: 0.8rem;">Our Foundation</span>
+                <h2 style="font-family: var(--font-display); font-size: 2.5rem; color: var(--color-gold); margin-top: 10px;">Who We Are</h2>
+            </div>
+                <div class="container article-content reveal">
+                     <div class="carousel-slide">
+                        <img src="Images/536A5013.jpg" alt="Safari Tour">
+                       
+                    </div>
+          
+        </div>
+            <div class="mvv-grid">
+                
+                <!-- MISSION CARD -->
+                 <div class="company-card js-tilt">
+                    <div class="card-icon">
+                        <!-- REPLACE SRC WITH YOUR FILE: e.g., images/logo-star.png -->
+                        <div class="mvv-icon"><i class="fas fa-rocket"></i></div>
+                    </div>
+                    <h3>Our Mission</h3>
+                        <p>
+                            To elevate the standard of living through exceptional event execution, transformative tourism experiences, and world-class talent development. We turn ordinary moments into extraordinary legacies.
+                        </p>
+                        <div class="card-divider"></div>
+                    
+                </div>
+            
+
+                <!-- VISION CARD -->
+                  <div class="company-card js-tilt">
+                    <div class="card-icon">
+                        <!-- REPLACE SRC WITH YOUR FILE: e.g., images/logo-star.png -->
+                       <div class="mvv-icon"><i class="fas fa-eye"></i></div>
+                    </div>
+                    <h3>Our Vision</h3>
+                       <p>
+                        To be the undisputed leader in premium lifestyle management and entertainment across the continent. A brand synonymous with sophistication, reliability, and the spark of discovery.
+                    </p>
+                        <div class="card-divider"></div>
+                    
+                </div>
+               
+
+                <!-- VALUES CARD -->
+                      <div class="company-card js-tilt">
+                    <div class="card-icon">
+                        <!-- REPLACE SRC WITH YOUR FILE: e.g., images/logo-star.png -->
+                        <div class="mvv-icon"><i class="fas fa-gem"></i></div>
+                    </div>
+                    <h3>Our Values</h3>
+                      <p>
+                        We operate on <strong>Integrity</strong>, fueled by <strong>Innovation</strong>, and driven by <strong>Excellence</strong>. Every client, every artist, and every traveler is treated with the VIP respect they deserve.
+                    </p>
+                        <div class="card-divider"></div>
+                    
+                </div>
+               
+            
+
+            </div>
+        </div>
+    </section>
+        <!-- CAPTIVATING ARTICLE SECTION -->
+    <section class="about-article">
+        <div class="container article-content reveal">
+            <h2>What We Do</h2>
+        
+            <p>
+                At <span class="highlight">Venus Ventures</span>, we believe that true luxury lies in the details. We don't just plan events; we rewrite and architect memories, we don't just book tours; we curate transformative journeys and we don't just find talent; we launch legends.
+            </p>
+            <p>
+                As a multifunctional holding company, we stand at the convergence point where premium lifestyle meets precise execution. Whether managing a presidential gala, guiding a safari across the Mara, or producing the next viral music sensation, our approach remains the same: <span class="highlight">Uncompromising Excellence.</span>
+            </p>
+            <p>
+                We are the bridge between vision and reality. The spark that ignites unforgettable experiences. The trusted partner for those who demand the extraordinary.
+            </p>
+             <p>
+               <span class="highlight">We are Venus Ventures.</span> 
+            </p>
+        </div>
+    </section>
+    
+      <!-- 3D Divisions (With Glow) -->
+    <section id="subsidiaries" class="section-padding subsidiaries">
+        <div class="container">
+            <div class="text-center reveal">
+                <span style="color: var(--color-red); letter-spacing: 3px; text-transform: uppercase; font-size: 0.8rem;"></span>
+                <h2 style="font-family: var(--font-display); font-size: 3rem; color: var(--color-gold); margin-top: 10px;">Our Pillars</h2>
+            </div>
+
+            <div class="cards-grid">
+                
+                <!-- VENUS EVENTS -->
+                <div class="company-card js-tilt">
+                    <div class="card-icon">
+                        <!-- REPLACE SRC WITH YOUR FILE: e.g., images/logo-events.png -->
+                        <img src="images/lego.png" alt="Venus Events Logo">
+                    </div>
+                    <h3>Venus Daily Events</h3>
+                    <h4>Premium Event Management</h4>
+                    <p>Catering to corporate, social, and state functions with seamless execution and top-tier equipment.</p>
+                    <div class="card-divider"></div>
+                    <ul class="service-list">
+                        <li><i class="fas fa-star"></i> Media Production</li>
+                        <li><i class="fas fa-star"></i> High-Tech Tents</li>
+                        <li><i class="fas fa-star"></i> Digital Screens & Projection</li>
+                        <li><i class="fas fa-star"></i> Professional Sound</li>
+                        <li><i class="fas fa-star"></i> Live Streaming</li>
+                    </ul>
+                     <a href="venusdailyevents.html" class="btn btn-red">Book an Event Now</a>
+                </div>
+
+                <!-- TUTEMBEE KENYA -->
+                <div class="company-card js-tilt">
+                    <div class="card-icon">
+                        <!-- REPLACE SRC WITH YOUR FILE: e.g., images/logo-tutembee.png -->
+                        <img src="images/logo.png" alt="Tutembee Kenya Logo">
+                    </div>
+                    <h3>Tutembee Kenya</h3>
+                    <h4>Luxury Tourism & Travel</h4>
+                    <p>All-inclusive packages from transport to hotels and scenic locations. Experience the magic of Kenya.</p>
+                    <div class="card-divider"></div>
+                    <ul class="service-list">
+                        <li><i class="fas fa-bus"></i> Transport Logistics</li>
+                        <li><i class="fas fa-hotel"></i> Premium Hotel Bookings</li>
+                        <li><i class="fas fa-mountain"></i> Scenic Location Tours</li>
+                        <li><i class="fas fa-calendar-alt"></i> Custom Stay Durations</li>
+                    </ul>
+                     <a href="tutembee-kenya.html" class="btn btn-red">Book a Tour Now</a>
+                </div>
+
+                <!-- WHO IS THE STAR -->
+                <div class="company-card js-tilt">
+                    <div class="card-icon">
+                        <!-- REPLACE SRC WITH YOUR FILE: e.g., images/logo-star.png -->
+                        <img src="images/" alt="Who is the Star Logo">
+                    </div>
+                    <h3>Who is the Star</h3>
+                    <h4>Talent Search & Promotion</h4>
+                    <p>We discover, nurture, and promote the next generation of singing sensations.</p>
+                    <div class="card-divider"></div>
+                    <ul class="service-list">
+                        <li><i class="fas fa-search"></i> Scouting Talented Singers</li>
+                        <li><i class="fas fa-music"></i> Vocal Training & Development</li>
+                        <li><i class="fas fa-video"></i> Music Video Production</li>
+                        <li><i class="fas fa-bullhorn"></i> Marketing & Promotion</li>
+                    </ul>
+                    <button onclick="openModal()" class="btn btn-red" style="width: 100%; margin-top: 20px; transform: translateZ(25px);">Audition With Us</button>
+                </div>
+
+            </div>
+        </div>
+    </section>
+       
+    
+
+    <!-- MOVING CAROUSEL -->
+    <section id="showcase" class="section-padding showcase">
+        <div class="container">
+            <div class="text-center reveal">
+                <span style="color: var(--color-red); text-transform: uppercase; letter-spacing: 2px; font-size: 0.8rem;">Visual Portfolio</span>
+                <h2 style="font-family: var(--font-display); font-size: 2.5rem; color: var(--color-gold); margin-top: 10px;">Our Best Work</h2>
+            </div>
+
+            <div class="carousel-container reveal">
+                <button class="carousel-btn prev-btn" onclick="moveSlide(-1)"><i class="fas fa-chevron-left"></i></button>
+                <button class="carousel-btn next-btn" onclick="moveSlide(1)"><i class="fas fa-chevron-right"></i></button>
+                
+                <div class="carousel-track" id="track">
+                    <!-- Slide 1 -->
+                    <div class="carousel-slide">
+                        <img src="images/w1.JPG" alt="Corporate Event">
+                       
+                    </div>
+                    <!-- Slide 2 -->
+                    <div class="carousel-slide">
+                        <img src="images/JWN-9309.jpg" alt="Safari Tour">
+                       
+                    </div>
+                    <!-- Slide 3 -->
+                    <div class="carousel-slide">
+                        <img src="images/9.JPG" alt="Singer">
+                      
+                    </div>
+                    <!-- Slide 4 -->
+                    <div class="carousel-slide">
+                        <img src="images/DJI_0059.jpg" alt="Wedding">
+                        
+                    </div>
+                     <div class="carousel-slide">
+                        <img src="images/DSC_3033.jpg" alt="Wedding">
+                        
+                    </div>
+                     <div class="carousel-slide">
+                        <img src="images/DSC_7816.jpg" alt="Wedding">
+                        
+                     </div>
+                     <div class="carousel-slide">
+                        <img src="images/JWN-9360.jpg" alt="Wedding">
+                            
+                         </div>
+                     <div class="carousel-slide">
+                        <img src="images/1.jpg" alt="Wedding">
+                        
+                         </div>
+                    <div class="carousel-slide">
+                        <img src="images/2.jpg" alt="Wedding">
+                    
+                         </div>
+                    <div class="carousel-slide">
+                        <img src="images/3.png" alt="Wedding">
+                       
+                          </div>
+                    <div class="carousel-slide">
+                        <img src="images/4.png" alt="Wedding">
+                            </div>
+                        
+                    <div class="carousel-slide">
+                        <img src="images/JWN-9746.jpg" alt="Wedding">
+                        
+                          </div>
+                        
+                    <div class="carousel-slide">
+                        <img src="images/JWN-9757.jpg" alt="Wedding">
+                        
+                          </div>
+                        
+                    <div class="carousel-slide">
+                        <img src="images/DSC_2991.jpg" alt="Wedding">
+                        
+                          </div>
+                    <div class="carousel-slide">
+                        <img src="images/8.jpg" alt="Wedding">
+                        
+                          </div>
+                    <div class="carousel-slide">
+                        <img src="images/DSC_2995.jpg" alt="Wedding">
+                          </div>
+                    <div class="carousel-slide">
+                        <img src="images/JWN-9370.jpg" alt="Wedding">
+                        
+                </div>
+            </div>
+        </div>
+    </section>    
+
+            <!-- DYNAMIC STATISTICS -->
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <span class="stat-number" data-target="200">0</span>
+                    <span class="stat-label">Events Managed</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" data-target="10">0</span>
+                    <span class="stat-label">Counties Served</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" data-target="30">0</span>
+                    <span class="stat-label">Artists Launched</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" data-target="7">0</span>
+                    <span class="stat-label">Years Experience</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- VIDEO SECTION -->
+    <section id="video-showcase" class="section-padding video-section">
+        <div class="container">
+            <div class="text-center reveal">
+                <span style="color: var(--color-red); text-transform: uppercase; letter-spacing: 2px; font-size: 0.8rem;">Latest Productions</span>
+                <h2 style="font-family: var(--font-display); font-size: 2.5rem; color: var(--color-gold); margin-top: 10px;">Watch on Our Channel</h2>
+            </div>
+
+            <div class="video-grid reveal">
+                
+                <!-- VIDEO 1 -->
+                <div class="video-item">
+                    <!-- LINK: Put your Channel URL here -->
+                    <a href="https://youtu.be/4igSB6_gDxk?si=VNpozM2EVxGqvagB" target="_blank" class="video-card-link">
+                        <!-- IMAGE: Put the video thumbnail URL here -->
+                     <img src="Images/queens.png" alt="Queens of apostle Setup">
+                        <div class="play-overlay"><i class="fab fa-youtube"></i></div>
+                    </a>
+                    <div class="video-info">
+                        <h3>Queens of apostle Setup</h3>
+                        <a href="https://youtu.be/4igSB6_gDxk?si=VNpozM2EVxGqvagB" target="_blank">Watch on YouTube <i className="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+
+                <!-- VIDEO 2 -->
+                <div class="video-item">
+                    <a href="https://youtu.be/D2LWX5PViw8?si=OqNxmXwzdJiB5Iju" target="_blank" class="video-card-link">
+                        <img src="Images/wrc.png" alt="Concert Sound">
+                        <div class="play-overlay"><i class="fab fa-youtube"></i></div>
+                    </a>
+                    <div class="video-info">
+                        <h3> WRC Safari Rally Event</h3>
+                        <a href="https://youtu.be/D2LWX5PViw8?si=OqNxmXwzdJiB5Iju" target="_blank">Watch on YouTube <i className="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+
+                <!-- VIDEO 3 -->
+                <div class="video-item">
+                    <a href="https://youtu.be/L-30NcvedKU?si=gKeReycsoyE2nV0V" target="_blank" class="video-card-link">
+                        <img src="Images/starbrands.jpeg" alt="STARBRANDS EAST AFRICA AWARDS">
+                        <div class="play-overlay"><i class="fab fa-youtube"></i></div>
+                    </a>
+                    <div class="video-info">
+                        <h3>STARBRANDS EAST AFRICA AWARDS</h3>
+                        <a href="https://youtu.be/L-30NcvedKU?si=gKeReycsoyE2nV0V" target="_blank">Watch on YouTube <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+ 
+        <!-- REVIEWS SECTION (Moving Marquee) -->
+    <section id="reviews" class="section-padding reviews">
+        <div class="container">
+            <div class="text-center reveal">
+                <span style="color: var(--color-red); text-transform: uppercase; letter-spacing: 2px; font-size: 0.8rem;">Testimonials</span>
+                <h2 style="font-family: var(--font-display); font-size: 2.5rem; color: var(--color-gold); margin-top: 10px;">Client Stories</h2>
+            </div>
+
+            <div class="testimonials-wrapper reveal">
+                <div class="testimonials-track">
+                    
+                    <!-- REVIEWS LIST 1 -->
+                    <div class="review-card-scroll">
+                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                        <p class="review-text">"Venus Events transformed our annual corporate gala. The sound and projection mapping were flawless."</p>
+                        <div class="client-info"><div class="client-name text-gold">James Omondi</div><div style="font-size:0.8rem; color:#666;">CEO, TechCorp Kenya</div></div>
+                    </div>
+
+                    <div class="review-card-scroll">
+                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                        <p class="review-text">"Tutembe Kenya handled our honeymoon perfectly. The hotels were luxurious and the transport was on time."</p>
+                        <div class="client-info"><div class="client-name text-gold">Sarah & David</div><div style="font-size:0.8rem; color:#666;">Happy Tourists</div></div>
+                    </div>
+
+                    <div class="review-card-scroll">
+                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+                        <p class="review-text">"I auditioned for 'Who is the Star' and the professionalism was top-notch. They gave me valuable feedback."</p>
+                        <div class="client-info"><div class="client-name text-gold">Amani K.</div><div style="font-size:0.8rem; color:#666;">Upcoming Artist</div></div>
+                    </div>
+
+                     <div class="review-card-scroll">
+                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                        <p class="review-text">"The stage setup for our church conference was biblical. Venus Events truly delivered excellence."</p>
+                        <div class="client-info"><div class="client-name text-gold">Pastor John</div><div style="font-size:0.8rem; color:#666;">Glory Church</div></div>
+                    </div>
+
+                    <!-- REVIEWS LIST 2 (DUPLICATE FOR LOOP) -->
+                    <div class="review-card-scroll">
+                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                        <p class="review-text">"Venus Events transformed our annual corporate gala. The sound and projection mapping were flawless."</p>
+                        <div class="client-info"><div class="client-name text-gold">James Omondi</div><div style="font-size:0.8rem; color:#666;">CEO, TechCorp Kenya</div></div>
+                    </div>
+
+                    <div class="review-card-scroll">
+                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                        <p class="review-text">"Tutembe Kenya handled our honeymoon perfectly. The hotels were luxurious and the transport was on time."</p>
+                        <div class="client-info"><div class="client-name text-gold">Sarah & David</div><div style="font-size:0.8rem; color:#666;">Happy Tourists</div></div>
+                    </div>
+
+                    <div class="review-card-scroll">
+                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+                        <p class="review-text">"I auditioned for 'Who is the Star' and the professionalism was top-notch. They gave me valuable feedback."</p>
+                        <div class="client-info"><div class="client-name text-gold">Amani K.</div><div style="font-size:0.8rem; color:#666;">Upcoming Artist</div></div>
+                    </div>
+
+                     <div class="review-card-scroll">
+                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                        <p class="review-text">"The stage setup for our church conference was biblical. Venus Events truly delivered excellence."</p>
+                        <div class="client-info"><div class="client-name text-gold">Pastor John</div><div style="font-size:0.8rem; color:#666;">Glory Church</div></div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section style="background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://picsum.photos/seed/redcarpet/1920/600'); background-size: cover; padding: 100px 20px; text-align: center; border-top: 2px solid var(--color-gold);">
+        <div class="container">
+            <h2 style="font-family: var(--font-display); font-size: 3rem; color: var(--color-silver); margin-bottom: 20px;">Ready to Start?</h2>
+            <a href="venusdailyevents.html" class="btn btn-red">Book an Event Now</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h2 style="font-family: var(--font-display); font-size: 1.8rem; color: var(--color-silver); margin-bottom: 20px;">VENUS <span style="color:var(--color-gold)">VENTURES</span></h2>
+                    <p style="color: #888; font-size: 0.9rem;">Redefining excellence in events, tourism, and entertainment.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Companies</h4>
+                    <ul class="footer-links">
+                        <li><a href="venusdailyevents.html">Venus Daily Events</a></li>
+                        <li><a href="#">Tutembee Kenya</a></li>
+                        <li><a href="#">Who is the Star</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="#showcase">Gallery</a></li>
+                        <li><a href="#video-showcase">Videos</a></li>
+                        <li><a href="#reviews">Reviews</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="text-center" style="color: #555; font-size: 0.8rem; border-top: 1px solid #111; padding-top: 20px;">&copy; 2026 Venus Ventures Limited.</div>
+        </div>
+    </footer>
+
+    <!-- AUDITION MODAL -->
+    <div id="auditionModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <h3 style="color:var(--color-gold); font-family: var(--font-display);">Audition Application</h3>
+            <form onsubmit="event.preventDefault(); alert('Application sent!'); closeModal();">
+                <input type="text" placeholder="Name" style="width:100%; padding:10px; margin:10px 0; background:#222; border:1px solid #444; color:white;">
+                <input type="email" placeholder="Email" style="width:100%; padding:10px; margin:10px 0; background:#222; border:1px solid #444; color:white;">
+                <textarea placeholder="Tell us about your talent..." style="width:100%; padding:10px; margin:10px 0; background:#222; border:1px solid #444; color:white; height:80px;"></textarea>
+                <button class="btn btn-red" style="width:100%;">Submit</button>
+            </form>
+        </div>
+    </div>
+    <!-- JAVASCRIPT LOGIC -->
+       <script>
+        // Fixed: Initializing the missing variable for the brand animation
+        const brandsTrack = document.querySelector('.brands-track');
+        const brandObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && brandsTrack) {
+                    brandsTrack.classList.add('animate');
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        if(brandsTrack) brandObserver.observe(brandsTrack);
+
+        // 1. SCROLL REVEAL ANIMATION (Elements fading in)
+        window.addEventListener('scroll', reveal);
+
+        function reveal() {
+            var reveals = document.querySelectorAll('.reveal');
+            for (var i = 0; i < reveals.length; i++) {
+                var windowheight = window.innerHeight;
+                var revealtop = reveals[i].getBoundingClientRect().top;
+                var revealpoint = 150;
+
+                if (revealtop < windowheight - revealpoint) {
+                    reveals[i].classList.add('active');
+                }
+            }
+        }
+        // Trigger once on load
+        reveal();
+
+        // 2. PARALLAX EFFECT ON HERO BACKGROUND
+        window.addEventListener('scroll', () => {
+            const scrollY = window.scrollY;
+            const heroBg = document.getElementById('heroBg');
+            if(heroBg) {
+                // Moves background slower than scroll for depth
+                // Using requestAnimationFrame for better performance than raw scroll event
+                window.requestAnimationFrame(() => {
+                    heroBg.style.transform = `translateY(${scrollY * 0.5}px)`;
+                });
+            }
+        });
+
+        // 3. 3D TILT EFFECT ON DIVISION CARDS
+        const cards = document.querySelectorAll('.js-tilt');
+
+        cards.forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left; 
+                const y = e.clientY - rect.top;  
+                
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                const rotateX = ((y - centerY) / centerY) * -10; 
+                const rotateY = ((x - centerX) / centerX) * 10;
+
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+            });
+
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = `perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)`;
+            });
+        });
+
+        // 4. CAROUSEL LOGIC (Moving Slides)
+        let currentIndex = 0;
+        const track = document.getElementById('track');
+        
+        if(track) {
+            const slides = Array.from(track.children);
+            
+            function getSlidesPerView() { 
+                return window.innerWidth >= 768 ? 3 : 1; 
+            }
+            
+            function updateCarousel() {
+                const slidesPerView = getSlidesPerView();
+                const maxIndex = slides.length - slidesPerView;
+                
+                if (currentIndex < 0) currentIndex = 0;
+                if (currentIndex > maxIndex) currentIndex = maxIndex;
+                
+                const amountToMove = currentIndex * (100 / slidesPerView);
+                track.style.transform = `translateX(-${amountToMove}%)`;
+            }
+            
+            function moveSlide(direction) { 
+                currentIndex += direction; 
+                updateCarousel(); 
+            }
+
+            // Auto-play carousel
+            let carouselInterval = setInterval(() => {
+                const slidesPerView = getSlidesPerView();
+                if (currentIndex < slides.length - slidesPerView) { 
+                    moveSlide(1); 
+                } else { 
+                    currentIndex = 0; 
+                    updateCarousel(); 
+                }
+            }, 4000);
+
+            // Pause carousel on hover to save resources
+            track.addEventListener('mouseenter', () => clearInterval(carouselInterval));
+            track.addEventListener('mouseleave', () => {
+                 carouselInterval = setInterval(() => {
+                    const slidesPerView = getSlidesPerView();
+                    if (currentIndex < slides.length - slidesPerView) { 
+                        moveSlide(1); 
+                    } else { 
+                        currentIndex = 0; 
+                        updateCarousel(); 
+                    }
+                }, 4000);
+            });
+        }
+
+        // 5. MOBILE MENU TOGGLE
+        function toggleMenu() { 
+            const mobileNav = document.getElementById('mobileNav');
+            if(mobileNav) {
+                mobileNav.classList.toggle('active'); 
+            }
+        }
+
+        // 6. MODAL LOGIC (Audition Form)
+        function openModal() { 
+            document.getElementById('auditionModal').style.display = "flex"; 
+        }
+        
+        function closeModal() { 
+            document.getElementById('auditionModal').style.display = "none"; 
+        }
+
+        // Close modal if clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('auditionModal');
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }       
+
+        // 7. DYNAMIC STATISTICS COUNTER (Optimized)
+        const stats = document.querySelectorAll('.stat-number');
+        let hasCounted = false;
+
+        const observerOptions = { threshold: 0.5 };
+
+        const statsObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !hasCounted) {
+                    hasCounted = true;
+                    stats.forEach(stat => {
+                        const target = +stat.getAttribute('data-target');
+                        const duration = 2000; // Fixed duration of 2 seconds
+                        const increment = target / (duration / 20); // Calculate steps
+
+                        let current = 0;
+                        const updateCount = () => {
+                            current += increment;
+                            if (current < target) {
+                                stat.innerText = Math.ceil(current);
+                                requestAnimationFrame(updateCount);
+                            } else {
+                                stat.innerText = target + "+";
+                            }
+                        };
+                        updateCount();
+                    });
+                    observer.unobserve(entry.target); // Stop watching once counted
+                }
+            });
+        }, observerOptions);
+
+        const statsSection = document.querySelector('.stats-grid');
+        if(statsSection) {
+            statsObserver.observe(statsSection);
+        }
+
+    </script>
+</body>
+</html>
